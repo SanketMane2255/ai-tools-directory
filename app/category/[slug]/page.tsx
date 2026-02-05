@@ -15,14 +15,14 @@ interface CategoryPageProps {
 export async function generateStaticParams() {
   const categories = getAllCategories();
   return categories.map((category) => ({
-    slug: encodeURIComponent(category),
+    slug: category,
   }));
 }
 
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
-  const category = decodeURIComponent(params.slug);
+  const category = params.slug;
 
   return {
     title: `${category} AI Tools - AI Tools Hub`,
@@ -31,7 +31,7 @@ export async function generateMetadata({
 }
 
 export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = decodeURIComponent(params.slug);
+  const category = params.slug;
   const tools = getToolsByCategory(category);
 
   if (tools.length === 0) {
