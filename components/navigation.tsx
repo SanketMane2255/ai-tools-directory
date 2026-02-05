@@ -1,20 +1,28 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { MoonIcon, SunIcon, Sparkles } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { MoonIcon, SunIcon, Sparkles, Menu } from "lucide-react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 export function Navigation() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/tools', label: 'All Tools' },
-    { href: '/categories', label: 'Categories' },
+    { href: "/", label: "Home" },
+    { href: "/tools", label: "All Tools" },
+    { href: "/categories", label: "Categories" },
   ];
 
   return (
@@ -24,9 +32,7 @@ export function Navigation() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
             <Sparkles className="h-5 w-5 text-white" />
           </div>
-          <span className="hidden font-bold sm:inline-block">
-            AI Tools Hub
-          </span>
+          <span className="hidden font-bold sm:inline-block">AI Tools Hub</span>
         </Link>
 
         <nav className="flex items-center gap-6">
@@ -36,10 +42,10 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
+                  "text-sm font-medium transition-colors hover:text-primary",
                   pathname === link.href
-                    ? 'text-foreground'
-                    : 'text-muted-foreground'
+                    ? "text-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {link.label}
@@ -50,13 +56,42 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="h-9 w-9"
           >
             <SunIcon className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <MoonIcon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
+
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[240px]">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <div className="flex flex-col gap-4 py-4">
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "text-base font-medium transition-colors hover:text-primary px-2 py-1",
+                      pathname === link.href
+                        ? "text-foreground"
+                        : "text-muted-foreground",
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </nav>
       </div>
     </header>

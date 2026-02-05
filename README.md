@@ -1,41 +1,3 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
 # AI Tools Hub
 
 A modern, polished content directory website showcasing the best AI tools for content creation, productivity, design, and development. Built with Next.js 14 App Router, TypeScript, and Tailwind CSS.
@@ -136,6 +98,8 @@ The design draws inspiration from:
 
 ## AI Tools Used
 
+## Prompts 
+
 ### 1. Code Generation
 **Prompt**: "Create a Next.js App Router project structure for an AI tools directory with TypeScript, including routes for home, tools listing, individual tool pages, and category pages."
 
@@ -210,15 +174,6 @@ npm run typecheck
 
 Visit `http://localhost:3000` to view the site.
 
-## Deployment
-
-The site is optimized for Vercel deployment:
-
-1. Push code to GitHub
-2. Import repository in Vercel
-3. Vercel automatically detects Next.js and deploys
-4. Static pages are pre-rendered at build time
-5. ISR can be configured for dynamic updates
 
 ## What I Would Improve with 2 More Days
 
@@ -253,11 +208,5 @@ The site is optimized for Vercel deployment:
 3. **CI/CD**: Automated testing and deployment pipelines
 4. **CMS Integration**: Connect to headless CMS for easier content management
 
-## License
 
-MIT
-
-## Contact
-
-Built as an assessment project demonstrating Next.js, TypeScript, and modern web development practices.
 
